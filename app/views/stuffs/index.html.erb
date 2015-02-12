@@ -1,0 +1,159 @@
+ <div class="container">
+  <div class="row">
+    <div class="well">
+      <h3>Welcome to InfoKosJogja!</h3>
+      <h5 class="subheader">Info Kost Jogja Pusat Informasi Indekost Terlengkap di Jogja dengan Harga yang Terjangkau dan Fasilitas Istimewa
+      </h5>
+    </div>
+  </div>
+
+
+   Search by price interval: <b><div>Rp 50.000    </b> <input id="ex2" type="text" class="slider" value="" data-slider-min="100000" data-slider-max="2000000" data-slider-step="50000" data-slider-value="[250,450]"/> <b>Rp 2.000.000</div></b>
+  <br>
+  
+
+  <%= form_for @filterrific do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-search search-only">
+        Search by address<%= f.text_field(:search_query,class: 'filterrific-periodically-observed form-control search-query') %>
+      </div>
+    </div>
+    <div class="col-md-2">
+     Search by gender <%= f.select(:with_gender,@filterrific.select_options[:with_gender], { include_blank: '- Select Gender -'})%>
+    </div>
+     <%= f.hidden_field(:price_gte,class: 'filterrific-periodically-observed form-control search-query') %>
+      <%= f.hidden_field(:price_lt,class: 'filterrific-periodically-observed form-control search-query') %>
+    <% end %>
+   
+  </div>
+
+  <br>
+  
+  <br>
+  <br>
+
+
+  <%# See below for the Country.options_for_select presenter method %>
+  
+
+  <br>
+  <div class="row">
+
+    <% if current_user %>
+    <% @confirm.each do |f| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag(f.picture_url, :width => 500, :height =>500,:class=>'img-rounded')%>
+        <div class="caption text-center">
+          <h3><%= f.name %></h3>
+          <p><%= f.price %>/bulan</p>
+          <p><%= f.gender_id %></p>
+            <p><%= f.alamat %></p>
+          
+          <% if current_user %>
+          <%= link_to 'Show', edit_stuff_path(f) , :class => 'btn btn-success'%>
+
+
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% else %>
+
+  <% @confirm.each do |f| %>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <%= image_tag(f.picture_url, :width => 500, :height =>500,:class=>'img-rounded')%>
+      <div class="caption text-center">
+        <h3><%= f.name %></h3>
+        <p><%= f.price %>/bulan</p>
+        <p><%= f.gender_id %></p>
+         <p><%= f.alamat %></p>
+
+
+        <p><%= link_to 'Show', stuff_path(f) ,:class =>'btn btn-success' %>
+          <% if current_user %>
+          <%= link_to 'Edit', edit_stuff_path(f) , :class => 'btn btn-warning'%>
+
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% end %>
+
+
+</div>
+</div>
+ <!-- <div class="row">
+    <div class="large-12 columns">
+
+      <div class="row">
+ 
+        <div class="large-8 columns">
+          <div class="row">
+ 
+            <% @stuff.each do |f| %>
+            <div class="large-4 small-6 columns">
+              <img src>
+              <%= image_tag(f.picture_url, :width => 500, :height =>500)%></img src>
+              <div class="panel">
+                <h6 class="subheader"><%= f.price %>/bulan</h6>
+                <li><a href="#"><%= link_to 'Show', stuff_path(f) %></a></li>
+                <li><a href="#"><%= link_to 'Edit', edit_stuff_path(f) %></a></li>
+                <li><a href="#"><%= link_to 'Delete', stuff_path(f),method: 'delete' %></a></li>
+              </div>
+            </div>
+            <% end %>
+        
+      </div>
+ 
+      <footer class="row">
+        <div class="large-12 columns"><hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="#"><%= link_to 'Create New', new_stuff_path %></a></li>
+                
+              </ul>
+            </div>
+ 
+          </div>
+        </div>
+      </footer>
+ 
+    </div>
+  </div>
+-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="footer">
+      <div class="container">
+        <div class="clearfix">
+          <div class="footer-logo"><a href="#"><i class="fa fa-home"></i> InfoKosJogja</a></div>
+          <dl class="footer-nav">
+            <dt class="nav-title">ABOUT</dt>
+            <dd class="nav-item"><a href="#">The Company</a></dd>
+            <dd class="nav-item"><a href="#">History</a></dd>
+            <dd class="nav-item"><a href="#">Vision</a></dd>
+          </dl>
+          <dl class="footer-nav">
+            <dt class="nav-title">CONTACT</dt>
+            <dd class="nav-item"><a href="#">Basic Info</a></dd>
+            <dd class="nav-item"><a href="#">Map</a></dd>
+            <dd class="nav-item"><a href="#">Conctact Form</a></dd>
+          </dl>
+        </div>
+        <div class="footer-copyright text-center">Copyright &copy; 2014 Astrid Lintang Ventika Project PKL Qiscus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

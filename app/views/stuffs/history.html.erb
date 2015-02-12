@@ -1,0 +1,31 @@
+ <div class="container">
+<h3> History </h3>
+<% @histories.each do |f| %>
+<div class="col-sm-6 col-md-3">
+  <div class="thumbnail">
+    <%= image_tag(f.picture_url, :width => 200, :height =>200)%>
+    <div class="caption text-center">
+      <h3><%= f.name %></h3>
+      <p><%= f.price %>/bulan</p>
+      <p><%= f.gender_id %></p>
+      <p><%= f.email %></p>
+
+      <% if f.confirm_date==nil %>
+      Tunggu konfirmasi
+      <% else %>
+      <% if (30-((Date.today-f.confirm_date.to_date).round))<6  %>
+      <p> <%= link_to 'extend', stuff_extend_path(f) , :class => 'btn btn-warning' %>
+      <% else %>
+      Remaining <%= (30-((Date.today-f.confirm_date.to_date).round)) %> Days
+        <% end %>
+        <%end%>
+        <p><%= link_to 'Show', stuff_path(f) ,:class =>'btn btn-success' %>
+
+         <p> <%= link_to 'Delete', stuff_path(f),method: 'delete', :class => 'btn btn-danger ' %>
+         </p>
+       </div>
+     </div>
+   </div>
+   <% end %>
+ </div>
+

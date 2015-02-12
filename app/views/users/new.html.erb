@@ -1,0 +1,53 @@
+<div class="container custom-login">
+	<% if !@user.errors.empty? %>
+		<% @user.errors.full_messages.each do |error| %>
+			<div class="row">
+				<div class="col-md-4 center alert alert-danger" style="float: none;margin: auto;">
+					<p><%= error %></p>
+				</div>
+			</div>
+		<%end %>
+	<% end %>
+	<%= form_for @user do |f| %>
+      <div class="row">
+        <div class="col-md-4 center" style="float: none;margin: auto;">
+          <div class="well">
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email , :class => 'form-control', :placeholder => 'enter email' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => 'form-control', :placeholder => 'enter password' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'confirm password' %>
+  </div>
+  <%= f.submit :submit, :class => "btn btn-success btn-block" %>
+          </div>
+        </div>
+      </div>
+<% end %>
+    </div>
+
+
+
+<!-- <h1>New</h1>
+<% if !@user.errors.empty? %>
+	<% @user.errors.full_messages.each do |error| %>
+		<h4 style="color:red;"><%= error %></h4>
+	<%end %>
+	<% end %>
+<%= form_for @user do |f| %>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<br>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+	<br>
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation %>
+	<br>
+	<%= f.submit %>
+	<% end %> -->

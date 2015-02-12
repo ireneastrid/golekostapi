@@ -1,0 +1,81 @@
+<div class="container">
+<br>
+<br>
+<table>
+<tr>
+  <div class="row">
+  <h3>Confirm </h3>
+  <% @confirm.each do |f| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag(f.picture_url, :width => 500, :height =>500,:class=>'img-rounded')%>
+        <div class="caption text-center">
+          <h3><%= f.name %></h3>
+          <p><%= f.price %>/bulan</p>
+          <p><%= f.gender_id %></p>
+          <p><%= f.status %></p>
+          
+            <% if current_user %>
+            <%= link_to 'Show', edit_stuff_path(f) , :class => 'btn btn-success'%>
+            <%= link_to 'Delete', stuff_path(f),method: 'delete', :class => 'btn btn-danger ' %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</tr>
+<br>
+<br>
+<tr>
+  <div class="row">
+  <h3>Waiting </h3>
+  <% @waiting.each do |f| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag(f.picture_url, :width => 500, :height =>500,:class=>'img-rounded')%>
+        <div class="caption text-center">
+          <h3><%= f.name %></h3>
+          <p><%= f.price %>/bulan</p>
+          <p><%= f.gender_id %></p>
+          <p><%= f.status %></p>
+           <p><%= f.email %></p>
+            <% if current_user %>
+            <%= link_to 'Show', edit_stuff_path(f) , :class => 'btn btn-success'%>
+            <%= link_to 'Delete', stuff_path(f),method: 'delete', :class => 'btn btn-danger ' %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</tr>
+<br>
+<br>
+<tr>
+  <div class="row">
+    <h3>Decline</h3>
+    <% @decline.each do |f| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag(f.picture_url, :width => 500, :height =>500,:class=>'img-rounded')%>
+        <div class="caption text-center">
+          <h3><%= f.name %></h3>
+          <p><%= f.price %>/bulan</p>
+          <p><%= f.status %></p>
+          
+            <% if current_user %>
+            <%= link_to 'Show', edit_stuff_path(f) , :class => 'btn btn-success'%>
+            <%= link_to 'Delete', stuff_path(f),method: 'delete', :class => 'btn btn-danger ' %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</tr>
+</table>
+</div>
